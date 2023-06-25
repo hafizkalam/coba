@@ -31,13 +31,13 @@ class WebController extends Controller
         $session = new Session();
         //   $session->set('variableName', 3333);
 
-        $noFaktur = $session->get('faktur');
+        $noFaktur = $session->get('fakturs');
         if($noFaktur == "")
         {
-            $vaFaktur = DB::table("faktur")->where('Kode','Faktur')->first();
+            $vaFaktur = DB::table("fakturs")->where('Kode','Faktur')->first();
             $noFaktur = $vaFaktur->Keterangan +1     ;
-            $vaFaktur = DB::table("faktur")->where('Kode','Faktur')->update(["Keterangan"=>$noFaktur]);
-            $session->set('faktur', $noFaktur);
+            $vaFaktur = DB::table("fakturs")->where('Kode','Faktur')->update(["Keterangan"=>$noFaktur]);
+            $session->set('fakturs', $noFaktur);
         }
         // dd(str_pad($noFaktur,10,"0",STR_PAD_LEFT));
 
@@ -65,6 +65,6 @@ class WebController extends Controller
         // $data['tenant'] = MasterTenant::select('nama_menu')->where('name_tenant', '')->get();
 
         $data['url'] = $request->url();
-        return view('layout.meja', $data);
+        return view('layout.viewmenu', $data);
     }
 }
