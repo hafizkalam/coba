@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name_menu');
             $table->string('harga_menu');
             $table->string('foto_menu')->nullable();
-            $table->string('desc_menu');
+            $table->string('desc_menu')->nullable();
         });
     }
 
