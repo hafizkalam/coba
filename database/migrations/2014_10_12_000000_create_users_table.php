@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('level');
             $table->string('profile')->nullable();
-            $table->string('desc');
+            $table->string('desc')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

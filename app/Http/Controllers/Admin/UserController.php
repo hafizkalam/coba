@@ -26,10 +26,12 @@ class UserController extends Controller
 
     public function createedit(Request $request)
     {
-        // $file = Request()->proile;
-        // $fileName = Request()->name.time().'.' . $file->extension();
-        // $file->move(public_path('profile_users'), $fileName);
+        $file = Request()->proile;
+        $fileName = Request()->name . time().'.' . $file->extension();
+        $file->move(public_path('profile_users'), $fileName);
 
+        // dd($fileName);
+        // exit;
         $test = Auth::user();
         // $nama = $test->name;
 
@@ -39,7 +41,7 @@ class UserController extends Controller
             "email" => $request->email,
             "password" => Hash::make("123"),
             "level" => "2",
-            "profile" => "sdfsdf"/*$fileName*/,
+            "profile" => $fileName,
             "desc" => $request->desc,
         );
 
@@ -47,6 +49,10 @@ class UserController extends Controller
             "name_tenant" => $request->name
         );
 
+        if ($request->hasFile('url')) {
+            $path = $request->file('url')->store('user');
+            $vaUpdate['url'] = $path;
+        }
         if ($request->has('edit')) {
             User::where('id', $request->id)->update($vaUpdate);
         } else {

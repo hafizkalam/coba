@@ -51,7 +51,9 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->email }}</td>
-                                            <td><img width="100px" src="{{ url('/picture_profile/' . $value->url) }}"></td>
+                                            <td>
+                                                <img width="100px" src="{{ url('/profile_users/' . $value->foto_menu) }}">
+                                            </td>
                                             <td>{{ $value->desc }}</td>
                                             <td>
                                                 <a href="userdelete/{{ $value->id }}/{{ $value->name }}"
@@ -151,7 +153,6 @@
                             <label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
                             <div class="col-sm-11">
                                 <input type="email" name="email" id="email" class="form-control">
-                                <input type="email" name="id" id="id" class="d-none">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -163,8 +164,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-1 col-form-label">Description</label>
                             <div class="col-sm-11">
-                                <input type="email" name="email" id="email" class="form-control">
-                                <input type="email" name="id" id="id" class="d-none">
+                                <input type="email" name="desc" id="desc" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
             $("#email").val(data[2]);
             $("#profile").val(data[3]);
             $("#desc").val(data[4]);
-            // alert(data[1]);
+            // alert(data[4]);
         });
     </script>
 @endsection
