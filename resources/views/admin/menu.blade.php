@@ -152,7 +152,6 @@
                             <label for="inputEmail3" class="col-sm-1 col-form-label">Harga</label>
                             <div class="col-sm-11">
                                 <input type="text" name="harga_menu" id="harga_menu" class="form-control">
-                                {{-- <input type="text" name="id" id="id" class="d-none"> --}}
                             </div>
                         </div>
                         <div class="form-group row">
@@ -165,7 +164,6 @@
                             <label for="inputEmail3" class="col-sm-1 col-form-label">Description</label>
                             <div class="col-sm-11">
                                 <input type="text" name="desc_menu" id="desc_menu" class="form-control">
-                                {{-- <input type="text" name="id" id="id" class="d-none"> --}}
                             </div>
                         </div>
                     </div>
