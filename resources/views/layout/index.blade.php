@@ -44,7 +44,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="container d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
+            <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
                 <h1>{{ $judulheader }}<span>.</span></h1>
@@ -93,7 +93,7 @@
                         data-toggle="modal" data-target="#modal-tambah">
                         <div class="chef-member">
                             <div class="member-img">
-                                {{ $value->profile }}
+                                <img width="100px" src="{{ url('/picture_profile/' . $value->profile) }}">
                             </div>
                             <div class="member-info">
                                 <h4>{{ $value->name }}</h4>

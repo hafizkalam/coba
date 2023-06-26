@@ -41,7 +41,7 @@ Route::get('/', function () {
     return view('layout.index', $data);
 });
 
-Route::get('nomeja/{id?}', [WebController::class, 'showmenu']);
+Route::get('viewmenu/{id?}', [WebController::class, 'showmenu']);
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [AdminController::class, 'show']);
