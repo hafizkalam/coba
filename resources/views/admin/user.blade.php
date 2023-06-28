@@ -164,7 +164,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-1 col-form-label">Description</label>
                             <div class="col-sm-11">
-                                <input type="email" name="desc" id="desc" class="form-control">
+                                <input type="text" name="desc" id="desc" class="form-control">
                             </div>
                         </div>
                     </div>

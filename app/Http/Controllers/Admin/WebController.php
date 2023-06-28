@@ -29,14 +29,14 @@ class WebController extends Controller
     public function showmenu(Request $request)
     {
         $session = new Session();
-        //   $session->set('variableName', 3333);
+        // $session->set('variableName', 1);
 
         $noFaktur = $session->get('fakturs');
         if($noFaktur == "")
         {
-            $vaFaktur = DB::table("fakturs")->where('Kode','Faktur')->first();
-            $noFaktur = $vaFaktur->Keterangan +1     ;
-            $vaFaktur = DB::table("fakturs")->where('Kode','Faktur')->update(["Keterangan"=>$noFaktur]);
+            $vaFaktur = DB::table("fakturs")->where('kode','Faktur')->first();
+            $noFaktur = $vaFaktur->keterangan + 1;
+            $vaFaktur = DB::table("fakturs")->where('kode','Faktur')->update(["keterangan"=>$noFaktur]);
             $session->set('fakturs', $noFaktur);
         }
         // dd(str_pad($noFaktur,10,"0",STR_PAD_LEFT));

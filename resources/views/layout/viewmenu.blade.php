@@ -29,7 +29,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/main.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('/') }}plugins/fontawesome-free/css/all.min.css">
     <!-- =======================================================
    * Template Name: Yummy
    * Updated: Mar 10 2023 with Bootstrap v5.2.3
@@ -49,10 +49,23 @@
                 <img src="assets/img/logo.png" alt="">
                 {{-- <h1>{{ $judulheader }}<span>.</span></h1> --}}
             </a>
+            <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+                <!-- Right navbar links -->
+                <ul class="navbar-nav ml-auto">
+                    <!-- Messages Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            <i class="far fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                </ul>
 
-            <button class="btn bg-dark rounded-pill text-white ">
-                Nomor Meja {{ request()->id }}
-            </button>
+                <button class="btn bg-dark rounded-pill text-white ">
+                    Nomor Meja {{ request()->id }}
+                </button>
+
+            </nav>
+
         </div>
     </header><!-- End Header -->
 

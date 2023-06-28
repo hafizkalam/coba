@@ -30,7 +30,7 @@ class MejaController extends Controller
     public function generate($id)
     {
         $data = Meja::findOrFail($id);
-        $qrcode = QrCode::size(300)->generate("http://127.0.0.1:8000/nomeja/"."$data->no_meja");
+        $qrcode = QrCode::size(300)->generate("http://127.0.0.1:8000/viewmenu/"."$data->no_meja");
         return view('admin.qrcode', compact('qrcode'));
     }
 

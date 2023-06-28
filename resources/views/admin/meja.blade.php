@@ -47,7 +47,7 @@
                             </thead>
                             <tbody>
                                 <?php $no = 0; ?>
-                                {{-- @foreach ($meja as $value)
+                                @foreach ($data as $value)
                                     <?php $no++; ?>
                                     <tr>
                                         <td>{{ $no }}</td>
@@ -61,7 +61,7 @@
                                                 class="btn btn-danger float-right">Delete</a>
                                         </td>
                                     </tr>
-                                @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
