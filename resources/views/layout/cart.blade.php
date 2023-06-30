@@ -15,7 +15,7 @@
             <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('menu.index') }}">Menu</a></li>
+                        <li class="breadcrumb-item"><a>Menu</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Cart</li>
                     </ol>
                 </nav>
@@ -36,7 +36,7 @@
                 </thead>
                 <tbody>
                     @php $total = 0 @endphp
-                    @if (session('cart'))
+                    {{-- @if (session('cart'))
                         @foreach (session('cart') as $id_menu => $details)
                             @php $total += $details['harga'] * $details['quantity'] @endphp
                             <tr data-id="{{ $id_menu }}">
@@ -55,7 +55,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif
+                    @endif --}}
                 </tbody>
                 <tfoot>
                     <tr>
@@ -65,8 +65,7 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{{ route('menu.index') }}" class="btn btn-warning"><i
-                                    class="bi bi-bag-plus-fill"></i>Tambah Pesanan</a>
+                            <a class="btn btn-warning"><i class="bi bi-bag-plus-fill"></i>Tambah Pesanan</a>
                             @if (session('cart') >= 1)
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal">
@@ -96,9 +95,8 @@
                     <div class="modal-footer">
                         {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left">Close</button> --}}
                         <div class="btn-group">
-                            <a href="{{ route('transaksiTunai') }}" type="button" class="btn btn-warning"><i
-                                    class="bi bi-cash"></i>&nbsp;Tunai</a>
-                            <a href="{{ route('transaksi') }}" type="button" class="btn btn-success"><i
+                            <a type="button" class="btn btn-warning"><i class="bi bi-cash"></i>&nbsp;Tunai</a>
+                            <a type="button" class="btn btn-success"><i
                                     class="bi bi-credit-card-2-back-fill"></i>&nbsp;Non-Tunai</a>
                         </div>
                     </div>
@@ -106,7 +104,7 @@
             </div>
         </div>
     </section>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(".update-cart").change(function(e) {
             e.preventDefault();
 
@@ -145,5 +143,5 @@
                 });
             }
         });
-    </script>
+    </script> --}}
 @endsection
