@@ -52,7 +52,7 @@
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->email }}</td>
                                             <td>
-                                                <img width="100px" src="{{ url('/profile_users/' . $value->foto_menu) }}">
+                                                <img width="100px" src="{{ url('/profile_users/' . $value->profile) }}">
                                             </td>
                                             <td>{{ $value->desc }}</td>
                                             <td>

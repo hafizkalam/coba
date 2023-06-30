@@ -26,9 +26,10 @@ class UserController extends Controller
 
     public function createedit(Request $request)
     {
-        $file = Request()->proile;
+        $file = Request()->profile;
         $fileName = Request()->name . time().'.' . $file->extension();
         $file->move(public_path('profile_users'), $fileName);
+        // dd(public_path().'/profile_users');
 
         // dd($fileName);
         // exit;
