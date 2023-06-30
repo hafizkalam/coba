@@ -47,7 +47,7 @@
                             </thead>
                             <tbody>
                                 <?php $no = 0; ?>
-                                @foreach ($data as $value)
+                                @foreach ($meja as $value)
                                     <?php $no++; ?>
                                     <tr>
                                         <td>{{ $no }}</td>

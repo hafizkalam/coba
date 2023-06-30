@@ -14,17 +14,17 @@ class MejaController extends Controller
     {
         // dd($request->session()->get('nofaktur'));
         $data['user'] = Auth::user();
-        $data['data'] = Meja::get();
+        $data['meja'] = Meja::get();
         return view('admin.meja', $data);
     }
 
     public function create(Request $request)
     {
+
         $meja = new Meja;
         $meja->no_meja = $request->no_meja;
         $meja->save();
-        return view('admin.meja', $meja);
-
+        return redirect('meja');
     }
 
     public function generate($id)
