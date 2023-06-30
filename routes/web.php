@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebController;
+use App\Http\Controllers\CartController;
 use App\Models\Meja;
 use App\Models\User;
 use App\Models\Web;
@@ -42,6 +43,7 @@ Route::get('/', function () {
 });
 
 Route::get('viewmenu/{id?}', [WebController::class, 'showmenu']);
+Route::get('viewmenu/{id?}/cart', [CartController::class, 'showmenu']);
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [AdminController::class, 'show']);

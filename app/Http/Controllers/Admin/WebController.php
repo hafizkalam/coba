@@ -28,6 +28,7 @@ class WebController extends Controller
 
     public function showmenu(Request $request)
     {
+
         $session = new Session();
         // $session->set('variableName', 1);
 
@@ -65,6 +66,6 @@ class WebController extends Controller
         // $data['tenant'] = MasterTenant::select('nama_menu')->where('name_tenant', '')->get();
 
         $data['url'] = $request->url();
-        return view('layout.viewmenu', $data);
+        return view('layout.menuguest', $data);
     }
 }
