@@ -23,7 +23,7 @@
                 @endforeach
             </ul>
 
-            <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="00">
                 <?php $n = 0; ?>
 
                 @foreach ($menu_tenant as $key => $menu)
@@ -36,15 +36,14 @@
                             {{-- <h3>{{ $key }}</h3> --}}
                         </div>
 
-                        <div class="row gy-5 ">
+                        <div class="row g-3">
                             @foreach ($menu as $value)
-                                <div class="card col-6 menu-item ">
-                                    <div class="col-6 ">
-                                        <img src="{{ url('/picture_menu/' . $value->foto_menu) }}"
-                                            class="menu-img img-fluid" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h4>{{ $value->name_menu }}</h4>
+                                <div class="card col-6 rounded-7 bg-white text-center">
+                                    <div class="p-3">
+                                        <img class="menu-img img-fluid rounded" sizes="180x180"
+                                            src="{{ url('/picture_menu/' . $value->foto_menu) }}">
+
+                                        <h5>{{ $value->name_menu }}</h5>
                                         <p class="ingredients">
                                             {{ $value->desc_menu }}
                                         </p>

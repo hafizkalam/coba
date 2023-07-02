@@ -21,17 +21,17 @@
                 </nav>
                 <div class="tab-pane fade active show" id="menu-starters">
                     <div class="tab-header text-center">
-                        <h3><strong>Keranjang Pesanan</strong></h3>
+                        <h3><strong>Cart</strong></h3>
                         <br><br>
                     </div>
                 </div>
             </div>
             <table class="table table-hover" id="cart">
                 <thead>
-                    <th scope="col">Nama Pesanan</th>
+                    <th scope="col">Pesanan</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Jumlah</th>
-                    <th scope="col">Total Harga</th>
+                    <th scope="col">Total</th>
                     <th scope="col">Hapus</th>
                 </thead>
                 <tbody>
@@ -60,7 +60,7 @@
                 <tfoot>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <h3><strong>Total Rp.{{ $total }}</strong></h3>
+                            <h3><strong>Total Rp{{ $total }}</strong></h3>
                         </td>
                     </tr>
                     <tr>

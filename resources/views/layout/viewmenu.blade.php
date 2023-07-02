@@ -49,12 +49,12 @@
                 {{-- <h1>{{ $judulheader }}<span>.</span></h1> --}}
             </a>
 
-            <a class="nav" href="cart">
+            <a class="btn" href="{id?}/cart">
                 <i class="fas fa-shopping-cart fa-2" style="color: black"></i>
             </a>
 
             <button class="btn bg-dark rounded-pill text-white ">
-                Nomor Meja {{ request()->id }}
+                Table: {{ request()->id }}
             </button>
 
         </div>
@@ -66,7 +66,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    {{-- <footer id="footer" class="footer">
+    <footer id="footer" class="footer">
         <div class="container">
             <div class="copyright">
                 &copy; Copyright <strong><span>Glory Tech.</span></strong> All Rights Reserved
@@ -80,7 +80,7 @@
             </div>
         </div>
 
-    </footer><!-- End Footer --> --}}
+    </footer><!-- End Footer -->
     <!-- End Footer -->
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
