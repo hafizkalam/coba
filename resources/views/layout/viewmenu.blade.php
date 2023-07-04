@@ -49,7 +49,7 @@
                 {{-- <h1>{{ $judulheader }}<span>.</span></h1> --}}
             </a>
 
-            <a class="btn" href="{id?}/cart">
+            <a class="btn" href="{{ request()->id }}/cart">
                 <i class="fas fa-shopping-cart fa-2" style="color: black"></i>
             </a>
 

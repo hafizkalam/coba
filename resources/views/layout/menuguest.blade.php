@@ -23,7 +23,7 @@
                 @endforeach
             </ul>
 
-            <div class="tab-content" data-aos="fade-up" data-aos-delay="00">
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
                 <?php $n = 0; ?>
 
                 @foreach ($menu_tenant as $key => $menu)
@@ -51,7 +51,13 @@
                                             {{-- Rp.{{ $value->harga_menu }} --}}
                                             <?php echo 'Rp' . number_format($value->harga_menu, 0, ',', '.'); ?>
                                         </p>
-                                        <form method="POST" action="tambah">
+
+                                        <button type="button" class="btn btn-primary"
+                                            onClick="bukamodal('{{ $value->id }}', '{{ $value->name_menu }}')">
+                                            Beli
+                                        </button>
+
+                                        {{-- <form method="POST" action="tambah">
                                             <input type=button value='-'>
                                             <input type=test size=1 id='v' name='v' value='&nbsp; 1'>
                                             <input type=hidden value="{{ $value->id }}" id='modal_id_menu'
@@ -59,8 +65,16 @@
                                             <input type=hidden value="{{ $value->id }}" id='modal_id_menu'
                                                 name='modal_id_menu'>
                                             <input type=button value='+'>
-                                            {{-- <input name="qty" name="{{ $value->id }} }}" type="asd"> --}}
-                                        </form>
+                                        </form> --}}
+                                        {{-- <input name="qty" name="{{ $value->id }} }}" type="asd"> --}}
+
+                                        {{-- <div>
+                                            <button onclick="decreaseQuantity({{ $value->id }})">-</button>
+                                            <input type="text" id="quantity_{{ $value->id }}"
+                                                value="{{ $value->quantity }}" readonly>
+                                            <button onclick="increaseQuantity({{ $value->id }})">+</button>
+                                        </div> --}}
+
                                     </div>
                                 </div>
                             @endforeach
@@ -70,12 +84,56 @@
                 @endforeach
             </div>
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Masukkan Jumlah Pesanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="modal-menu" class="modal-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-1 col-form-label">Notes</label>
+                            <div class="col-sm-11">
+                                <input type="notes" name="notes" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <input type=button value='-' onclick='javascript:process(-1)'>
+                            <input type=test size=1 id='v' name='v' value='&nbsp; 1'>
+                            <input type=hidden id='modal_id_menu' name='modal_id_menu'>
+                            <input type=button value='+' onclick='javascript:process(1)'>
+                            <a id="id_menu_herf" type="button" class="btn btn-success">
+                                Tambah
+                            </a>
+                        </div>
+                        {{-- <a href="{{ route('add.to.cart', $value->id) }}" class="btn btn-success"><i
+                            class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </section><!-- End Menu Section -->
 @endsection
-{{-- <script language=javascript>
-    function process(v) {
-        var value = parseInt(document.getElementById('v').value);
-        value += v;
-        document.getElementById('v').value = value;
-    }
-</script> --}}
+
+@section('script')
+    <script>
+        // $("#qty").click(function() {
+        //     alert ("ok");
+        // });
+        function bukamodal(id, name_menu) {
+            $("#exampleModal").modal('show');
+            $("#modal_id").val(id);
+            $("#id_herf").attr("href", "/add-to-cart/" + id);
+            $("#modal-menu").html(name_menu);
+        }
+
+        function process(v) {
+            var value = parseInt(document.getElementById('v').value);
+            value += v;
+            document.getElementById('v').value = value;
+        }
+    </script>
+@endsection
