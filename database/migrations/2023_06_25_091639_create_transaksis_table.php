@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('id_master_tenant');
             $table->integer('no_transaksi');
-            $table->string('tgl_transaksi');
+            $table->dateTime('tgl_transaksi');
             $table->string('tipe_pembayaran');
             $table->string('no_meja');
             $table->integer('qty');
             $table->integer('total');
-            $table->timestamps();
+            $table->string('notes')->nullable();
         });
     }
 

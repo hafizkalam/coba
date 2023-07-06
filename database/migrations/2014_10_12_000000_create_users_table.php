@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('profile')->nullable();
             $table->string('desc')->nullable();
             $table->rememberToken();
-            $table->timestamps();
         });
     }
 

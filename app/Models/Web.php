@@ -9,5 +9,5 @@ class Web extends Model
 {
     use HasFactory;
     public $timestamps = false ;
-    public $fillable = ["description", "name"];
+    public $fillable = ["name", "description"];
 }
