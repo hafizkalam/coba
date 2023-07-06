@@ -57,6 +57,10 @@
                                             Beli
                                         </button>
 
+                                        <button type="button" class="btn btn-primary float-right" data-bs-toggle="modal"
+                                            data-bs-target="#modal-edit">
+                                            Edit
+                                        </button>
                                         {{-- <form method="POST" action="tambah">
                                             <input type=button value='-'>
                                             <input type=test size=1 id='v' name='v' value='&nbsp; 1'>
@@ -115,6 +119,40 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal-edit">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Masukkan Jumlah Pesanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div id="modal-menu" class="modal-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-1 col-form-label">Notes</label>
+                            <div class="col-sm-11">
+                                <input type="notes" name="notes" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="modal-footer">
+                            <input type=button value='-' onclick='javascript:process(-1)'>
+                            <input type=test size=1 id='v' name='v' value='&nbsp; 1'>
+                            <input type=hidden id='modal_id_menu' name='modal_id_menu'>
+                            <input type=button value='+' onclick='javascript:process(1)'>
+                            <a id="id_menu_herf" type="button" class="btn btn-success">
+                                Tambah
+                            </a>
+                        </div>
+                        {{-- <a href="{{ route('add.to.cart', $value->id) }}" class="btn btn-success"><i
+                            class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
+                    </div>
+                </div><!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
     </section><!-- End Menu Section -->
 @endsection
 
