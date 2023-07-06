@@ -35,6 +35,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th hidden>id</th>
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>Email</th>
@@ -48,6 +49,7 @@
                                     @foreach ($data as $value)
                                         <?php $no++; ?>
                                         <tr>
+                                            <td hidden>{{ $value->id }}</td>
                                             <td>{{ $no }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->email }}</td>
@@ -187,11 +189,12 @@
         $('#example1 tbody').on('click', 'tr', function() {
             var table = $('#example1').DataTable();
             var data = table.row(this).data();
-            $("#name").val(data[1]);
-            $("#email").val(data[2]);
-            $("#profile").val(data[3]);
-            $("#desc").val(data[4]);
-            // alert(data[4]);
+            $("#id").val(data[0]);
+            $("#name").val(data[2]);
+            $("#email").val(data[3]);
+            $("#profile").val(data[4]);
+            $("#desc").val(data[5]);
+            // alert(data[0]);
         });
     </script>
 @endsection

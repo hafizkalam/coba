@@ -26,9 +26,12 @@ class UserController extends Controller
 
     public function createedit(Request $request)
     {
-        $file = Request()->profile;
-        $fileName = Request()->name . time().'.' . $file->extension();
-        $file->move(public_path('profile_users'), $fileName);
+        // if ($request->hasFile('profile')) {
+
+        //     $file = Request()->profile;
+        //     $fileName = Request()->name . time().'.' . $file->extension();
+        //     $file->move(public_path('profile_users'), $fileName);
+        // }
         // dd(public_path().'/profile_users');
 
         // dd($fileName);
@@ -42,17 +45,22 @@ class UserController extends Controller
             "email" => $request->email,
             "password" => Hash::make("123"),
             "level" => "2",
-            "profile" => $fileName,
+            // "profile" => $fileName,
             "desc" => $request->desc,
         );
+        // dd($vaUpdate);
 
         $vaTenant = array(
             "name_tenant" => $request->name
         );
+        // dd($vaUpdate);
 
-        if ($request->hasFile('url')) {
-            $path = $request->file('url')->store('user');
-            $vaUpdate['url'] = $path;
+        if ($request->hasFile('profile')) {
+            // $path = $request->file('url')->store('user');
+            $file = Request()->profile;
+            $fileName = Request()->name . time().'.' . $file->extension();
+            $file->move(public_path('profile_users'), $fileName);
+            $vaUpdate['profile'] = $fileName;
         }
         if ($request->has('edit')) {
             User::where('id', $request->id)->update($vaUpdate);
