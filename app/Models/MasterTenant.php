@@ -9,4 +9,6 @@ class MasterTenant extends Model
 {
     use HasFactory;
     public $fillable = ["name_tenant", "name_menu", "harga_menu", "foto_menu", "desc_menu"];
+
+    public $timestamps = false;
 }

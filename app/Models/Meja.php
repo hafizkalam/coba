@@ -9,4 +9,6 @@ class Meja extends Model
 {
     use HasFactory;
     public $fillable = ["no_meja"];
+
+    public $timestamps = false;
 }
