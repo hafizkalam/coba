@@ -1,5 +1,5 @@
 <li class="nav-item">
-    <a href="{{ url('dashboard') }}" class="nav-link">
+    <a href="{{ url('dashboard') }}" class="nav-link" id="dashboard">
         <i class="nav-icon fas fa-home"></i>
         <p>
             Home
@@ -9,7 +9,7 @@
 
 @if (Auth::user()->level == '1')
     <li class="nav-item">
-        <a href="{{ url('web') }}" class="nav-link">
+        <a href="{{ url('web') }}" class="nav-link" id="web">
             <i class="nav-icon fas fa-light fa-house-user"></i>
             <p>
                 Web
@@ -18,7 +18,7 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('meja') }}" class="nav-link">
+        <a href="{{ url('meja') }}" class="nav-link" id="meja">
             <i class="nav-icon fas fa-solid fa-qrcode"></i>
             <p>
                 Meja
@@ -27,7 +27,7 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('transaksi') }}" class="nav-link">
+        <a href="{{ url('transaksi') }}" class="nav-link" id="transaksi">
             <i class="nav-icon fas fa-solid fa-shopping-cart"></i>
             <p>
                 Transaksi
@@ -36,7 +36,7 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('user') }}" class="nav-link">
+        <a href="{{ url('user') }}" class="nav-link" id="user">
             <i class="nav-icon fas fa-duotone fa-users"></i>
             <p>
                 User
@@ -45,7 +45,15 @@
     </li>
 @elseif(Auth::user()->level == '2')
     <li class="nav-item">
-        <a href="{{ url('transaksi') }}" class="nav-link">
+        <a href="{{ url('info-tenant') }}" class="nav-link" id="info">
+            <i class="nav-icon fas fa-solid fa-user"></i>
+            <p>
+                Info
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ url('transaksi') }}" class="nav-link" id="transaksi">
             <i class="nav-icon fas fa-solid fa-shopping-cart"></i>
             <p>
                 Transaksi
@@ -54,7 +62,7 @@
     </li>
 
     <li class="nav-item">
-        <a href="{{ url('menu') }}" class="nav-link">
+        <a href="{{ url('menu') }}" class="nav-link" id="menu">
             <i class="nav-icon fas fa-solid fa-bars"></i>
             <p>
                 Menu

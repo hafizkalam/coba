@@ -93,7 +93,7 @@
                         data-toggle="modal" data-target="#modal-tambah">
                         <div class="chef-member">
                             <div class="member-img">
-                                <img width="100px" src="{{ url('/picture_profile/' . $value->profile) }}">
+                                <img width="100px" src="{{ url('/profile_users/' . $value->profile) }}">
                             </div>
                             <div class="member-info">
                                 <h4>{{ $value->name }}</h4>

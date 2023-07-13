@@ -84,7 +84,7 @@
     </section>
 
     <div class="modal fade" id="modal-tambah">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form method="POST" enctype='multipart/form-data' action="user">
                     @csrf
@@ -96,26 +96,26 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Nama</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
                                 <input type="text" name="name" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
                                 <input type="email" name="email" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Profile Tenant</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Profile Tenant</label>
+                            <div class="col-sm-9">
                                 <input type="file" name="profile" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Description Tenant</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Description Tenant</label>
+                            <div class="col-sm-9">
                                 <input type="text" name="desc" class="form-control">
                             </div>
                         </div>
@@ -133,7 +133,7 @@
     </div>
 
     <div class="modal fade" id="modal-edit">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <form method="POST" id="saveEdit" enctype='multipart/form-data' action="user">
                     @csrf
@@ -145,27 +145,27 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Nama</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
+                            <div class="col-sm-9">
                                 <input type="text" name="name" id="name" class="form-control">
                                 <input type="text" name="id" id="id" class="d-none">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Email</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-9">
                                 <input type="email" name="email" id="email" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Profile</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Profile</label>
+                            <div class="col-sm-9">
                                 <input type="file" name="profile" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-1 col-form-label">Description</label>
-                            <div class="col-sm-11">
+                            <label for="inputEmail3" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-9">
                                 <input type="text" name="desc" id="desc" class="form-control">
                             </div>
                         </div>

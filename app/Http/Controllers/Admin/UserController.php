@@ -11,34 +11,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function show(){
-        $data['tenant'] = MasterTenant::whereNotNull('name_menu')->get();
-        // $data['tenant1'] = MasterTenant::select('name_tenant)->groupBy('name_tenant')->get();
+    public function show()
+    {
         $data['data'] = User::get();
-
-        // echo "<pre>";
-        // print_r($data['tenant1']);
-        // dd($data['tenant1']);
-        // exit;
-
+        $data['jsTambahan'] = "$('#user').addClass('active') ;";
         return view('admin.user', $data);
     }
 
     public function createedit(Request $request)
     {
-        // if ($request->hasFile('profile')) {
-
-        //     $file = Request()->profile;
-        //     $fileName = Request()->name . time().'.' . $file->extension();
-        //     $file->move(public_path('profile_users'), $fileName);
-        // }
-        // dd(public_path().'/profile_users');
-
-        // dd($fileName);
-        // exit;
+       
         $test = Auth::user();
-        // $nama = $test->name;
-
+       
         $vaUpdate = array(
             "id" => $request->id,
             "name" => $request->name,
@@ -48,24 +32,31 @@ class UserController extends Controller
             // "profile" => $fileName,
             "desc" => $request->desc,
         );
-        // dd($vaUpdate);
-
+        
         $vaTenant = array(
-            "name_tenant" => $request->name
+            "name"=>$request->name,
+            "profile"=>"",
+            "desc"=>"",
+            "user_id"=>$request->id
         );
-        // dd($vaUpdate);
-
+        
         if ($request->hasFile('profile')) {
             // $path = $request->file('url')->store('user');
             $file = Request()->profile;
-            $fileName = Request()->name . time().'.' . $file->extension();
+            $fileName = Request()->name . time() . '.' . $file->extension();
             $file->move(public_path('profile_users'), $fileName);
             $vaUpdate['profile'] = $fileName;
         }
         if ($request->has('edit')) {
             User::where('id', $request->id)->update($vaUpdate);
         } else {
-            User::create($vaUpdate);
+            $cek = User::create($vaUpdate);
+            $vaTenant = array(
+                "name"=>$request->name,
+                "profile"=>"",
+                "desc"=>"",
+                "user_id"=>$cek->id
+            );
             MasterTenant::create($vaTenant);
             $request->session()->put('notif', "Data berhasil ditambahkan");
         }
@@ -73,10 +64,10 @@ class UserController extends Controller
         return redirect('user');
     }
 
-    public function destory($id,$name)
+    public function destory($id, $name)
     {
         User::where('id', $id)->delete();
-        MasterTenant::where('name_tenant', $name)->delete();
+        MasterTenant::where('user_id', $id)->delete();
         return redirect('user');
     }
 }

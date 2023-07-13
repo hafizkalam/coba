@@ -11,7 +11,7 @@ class AdminController extends Controller
     public function show()
     {
         $data = Auth::user();
-
+        $data['jsTambahan'] = "$('#dashboard').addClass('active') ;";
         return view('admin.dashboard', $data);
     }
 }

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('master_tenants', function (Blueprint $table) {
             $table->id();
-            $table->string('name_tenant');
-            $table->string('name_menu')->nullable();
-            $table->string('harga_menu')->nullable();
-            $table->string('foto_menu')->nullable();
-            $table->string('desc_menu')->nullable();
+            $table->string('name')->nullable();
+            $table->string('profile')->nullable();
+            $table->string('desc')->nullable();
+            $table->boolean('status')->default(true);
+            $table->string('user_id') ;
         });
     }
 

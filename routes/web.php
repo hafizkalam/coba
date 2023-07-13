@@ -6,7 +6,10 @@ use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebController;
+use App\Http\Controllers\Admin\TenantController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\TransaksiController as ControllersTransaksiController;
+use App\Http\Controllers\TransaksiTmpController;
 use App\Models\Meja;
 use App\Models\User;
 use App\Models\Web;
@@ -42,6 +45,16 @@ Route::get('/', function () {
     return view('layout.index', $data);
 });
 
+
+Route::get('coba', [WebController::class, 'coba']);
+Route::post('tambah-pesanan', [TransaksiTmpController::class, 'tambahpesanan']);
+Route::post('delete-pesanan', [TransaksiTmpController::class, 'deletepesanan']);
+Route::get('jumlah-pesanan', [TransaksiTmpController::class, 'jumlah']);
+Route::get('list-pesanan', [TransaksiTmpController::class, 'list']);
+Route::post('notes-pesanan', [TransaksiTmpController::class, 'notespesanan']);
+Route::get('order', [TransaksiTmpController::class, 'order']);
+
+Route::post('/payment', [WebController::class, 'payment_post']);
 Route::get('viewmenu/{id?}', [WebController::class, 'showmenu']);
 Route::get('viewmenu/{id?}/cart', [CartController::class, 'showmenu']);
 
@@ -70,8 +83,11 @@ Route::middleware('auth')->group(function () {
     Route::get('menu', [MenuController::class, 'show']); // Show Content Menu
     Route::post('menu', [MenuController::class, 'createedit']); //Create Edit Insert Menu
     Route::get('menudelete/{id?}', [MenuController::class, 'destory']); // Delete Menu
+    Route::post('status-menu', [MenuController::class, 'status']); //Create Edit Insert Menu
 
-// Route::get('/home', [App\Http\Controllers\AdminController::class, 'index']);
+    Route::get("info-tenant", [TenantController::class, 'show']);
+    Route::post("edit-tenant", [TenantController::class, 'edit']);
+    // Route::get('/home', [App\Http\Controllers\AdminController::class, 'index']);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

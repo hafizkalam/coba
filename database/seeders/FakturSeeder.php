@@ -19,5 +19,11 @@ class FakturSeeder extends Seeder
         ];
 
         DB::table('fakturs')->insert($faktur);
+
+        $faktur = [
+            'kode' => 'FakturTmp',
+            'keterangan' => '1',
+        ];
+        DB::table('fakturs')->insert($faktur);
     }
 }

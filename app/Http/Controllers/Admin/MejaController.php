@@ -15,11 +15,14 @@ class MejaController extends Controller
         // dd($request->session()->get('nofaktur'));
         $data['user'] = Auth::user();
         $data['meja'] = Meja::get();
+        $data['jsTambahan'] = "$('#meja').addClass('active') ;";
+
         return view('admin.meja', $data);
     }
 
     public function create(Request $request)
     {
+
 
         $meja = new Meja;
         $meja->no_meja = $request->no_meja;
@@ -30,7 +33,7 @@ class MejaController extends Controller
     public function generate($id)
     {
         $data = Meja::findOrFail($id);
-        $qrcode = QrCode::size(300)->generate("http://127.0.0.1:8000/viewmenu/"."$data->no_meja");
+        $qrcode = QrCode::size(300)->generate("http://127.0.0.1:8000/viewmenu/" . "$data->no_meja");
         return view('admin.qrcode', compact('qrcode'));
     }
 

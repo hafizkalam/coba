@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MasterTenant extends Model
 {
     use HasFactory;
-    public $fillable = ["name_tenant", "name_menu", "harga_menu", "foto_menu", "desc_menu"];
+    protected $guarded = ['id'];
 
     public $timestamps = false;
 }
