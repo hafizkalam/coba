@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\WebController;
+use App\Http\Controllers\TransaksiTmpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,4 @@ use App\Http\Controllers\Admin\WebController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::post('test1', [WebController::class, 'test']);
+Route::post('order', [TransaksiTmpController::class, 'orderonline']);

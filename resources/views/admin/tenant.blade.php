@@ -51,14 +51,27 @@
                                             <input type="file" name="profile" class="form-control">
                                         </div>
                                     </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputPassword3" class="col-sm-4 col-form-label">Ganti Password</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="password" class="form-control">
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <label for="inputPassword3" class="col-sm-4 col-form-label">Status Tenant</label>
                                         <div class="col-sm-8">
-                                            <input type="checkbox" name="status"
-                                                @if ($tenant->status) checked @endif data-off-color="danger"
-                                                data-on-color="success" data-on-text="Buka" data-off-text="Tutup"
-                                                data-bootstrap-switch>
-
+                                            @if ($tenant->status != 2)
+                                                <input type="checkbox" name="status"
+                                                    @if ($tenant->status) checked @endif data-off-color="danger"
+                                                    data-on-color="success" data-on-text="Buka" data-off-text="Tutup"
+                                                    data-bootstrap-switch>
+                                            @endif
+                                            @if ($tenant->status == 2)
+                                                Terblokir
+                                                <input type="text" class="d-none" name="status" value="2">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

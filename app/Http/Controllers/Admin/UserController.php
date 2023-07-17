@@ -20,9 +20,9 @@ class UserController extends Controller
 
     public function createedit(Request $request)
     {
-       
+
         $test = Auth::user();
-       
+
         $vaUpdate = array(
             "id" => $request->id,
             "name" => $request->name,
@@ -32,14 +32,14 @@ class UserController extends Controller
             // "profile" => $fileName,
             "desc" => $request->desc,
         );
-        
+
         $vaTenant = array(
-            "name"=>$request->name,
-            "profile"=>"",
-            "desc"=>"",
-            "user_id"=>$request->id
+            "name" => $request->name,
+            "profile" => "",
+            "desc" => "",
+            "user_id" => $request->id
         );
-        
+
         if ($request->hasFile('profile')) {
             // $path = $request->file('url')->store('user');
             $file = Request()->profile;
@@ -49,13 +49,14 @@ class UserController extends Controller
         }
         if ($request->has('edit')) {
             User::where('id', $request->id)->update($vaUpdate);
+            MasterTenant::where('user_id', $request->id)->update(["name" => $request->name]);
         } else {
             $cek = User::create($vaUpdate);
             $vaTenant = array(
-                "name"=>$request->name,
-                "profile"=>"",
-                "desc"=>"",
-                "user_id"=>$cek->id
+                "name" => $request->name,
+                "profile" => "",
+                "desc" => "",
+                "user_id" => $cek->id
             );
             MasterTenant::create($vaTenant);
             $request->session()->put('notif', "Data berhasil ditambahkan");

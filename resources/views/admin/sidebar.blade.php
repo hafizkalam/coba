@@ -25,6 +25,14 @@
             </p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('tenant') }}" class="nav-link" id="tenant">
+            <i class="nav-icon fas fa-light fa-store"></i>
+            <p>
+                Tenant
+            </p>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a href="{{ url('transaksi') }}" class="nav-link" id="transaksi">

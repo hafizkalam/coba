@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Yummy Bootstrap Template - Index</title>
+    <title>{{ $judulheader }}</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -29,6 +29,9 @@
     <link href="{{ asset('/') }}assets/vendor/aos/aos.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-confirm@3.3.4/dist/jquery-confirm.min.css">
+
+
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('/') }}assets/css/main.css" rel="stylesheet">
@@ -43,6 +46,14 @@
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SET_YOUR_CLIENT_KEY_HERE"></script>
     <style>
+        #loading-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
         .btn-number {
             padding: 0.375rem 0.75rem;
         }
@@ -145,7 +156,7 @@
             <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1>Yummy<span>.</span></h1>
+                <h1>{{ $judulheader }}<span>.</span></h1>
             </a>
 
             <nav id="navbar" class="navbar ">
@@ -159,7 +170,7 @@
             </nav><!-- .navbar -->
 
 
-            <a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
+            <a class="btn-book-a-table" href="#book-a-table">Table: {{ $no_meja }}</a>
 
         </div>
     </header><!-- End Header -->
@@ -177,10 +188,9 @@
                 <div class="col-lg-3 col-md-6 d-flex">
                     <i class="bi bi-geo-alt icon"></i>
                     <div>
-                        <h4>Address</h4>
+                        <h4>{{ $judulalamat }}</h4>
                         <p>
-                            A108 Adam Street <br>
-                            New York, NY 535022 - US<br>
+                            {{ $alamat }} <br>
                         </p>
                     </div>
 
@@ -189,10 +199,10 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-telephone icon"></i>
                     <div>
-                        <h4>Reservations</h4>
+                        <h4>{{ $judulkontak }}</h4>
                         <p>
-                            <strong>Phone:</strong> +1 5589 55488 55<br>
-                            <strong>Email:</strong> info@example.com<br>
+                            <strong>Phone:</strong> {{ $kontak }}<br>
+                            <strong>Email:</strong> {{ $email }}<br>
                         </p>
                     </div>
                 </div>
@@ -200,10 +210,9 @@
                 <div class="col-lg-3 col-md-6 footer-links d-flex">
                     <i class="bi bi-clock icon"></i>
                     <div>
-                        <h4>Opening Hours</h4>
+                        <h4>{{ $juduljamoperasional }}</h4>
                         <p>
-                            <strong>Mon-Sat: 11AM</strong> - 23PM<br>
-                            Sunday: Closed
+                            <strong>{{ $jamoperasional }}</strong><br>
                         </p>
                     </div>
                 </div>
@@ -223,14 +232,14 @@
 
         <div class="container">
             <div class="copyright">
-                &copy; Copyright <strong><span>Yummy</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>Glory Tech</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <strong>Glory Tech.</strong>
             </div>
         </div>
 
@@ -256,7 +265,7 @@
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery-confirm@3.3.4/dist/jquery-confirm.min.js"></script>
 
     @section('script')
     @show

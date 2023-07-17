@@ -17,7 +17,7 @@ return new class extends Migration
             $table->integer('harga')->nullable();
             $table->string('foto')->nullable();
             $table->string('desc')->nullable();
-            $table->boolean('status')->default(false);
+            $table->boolean('status')->default(true);
             $table->string('master_tenants_id')->nullable();
         });
     }

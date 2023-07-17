@@ -2,11 +2,15 @@
 
 @section('content')
     <section id="menu" class="menu">
+        <div id="loading-indicator">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div class="container" data-aos="fade-up">
 
             <div class="section-header">
                 <h2>Our Menu</h2>
-                <p>Check Our <span>Yummy Menu</span></p>
             </div>
 
             <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -59,7 +63,7 @@
                                                     style="background-color:#ec2727; color: white;">-</button>
                                             </div>
                                             <input type="text" class="form-control text-center"
-                                                id="jumlah{{ $value->id }}" value="0">
+                                                id="jumlah{{ $value->id }}" value="0" readonly>
                                             <div class="input-group-append">
                                                 <button class="btn btn-outline-secondary btn-number"
                                                     style="background-color:#ec2727; color: white;"
@@ -82,56 +86,28 @@
     <!-- Large modal -->
     <div class="modal" id="modal-checkout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                    <h5 class="modal-title" id="exampleModalLabel">
-                        Keranjang Pesanan
-                    </h5>
-                    <button type="button" class="close" onclick="CloseCheckout()" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="listmenu">
+            <div class="modal-content" id="listmenu">
 
-                    <div class="d-flex justify-content-end">
-                        <h5>Total: <span class="price text-success">89$</span></h5>
-                    </div>
-                </div>
-                <div class="modal-footer border-top-0 d-flex justify-content-between">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onClick='CloseCheckout()'>Close</button>
-
-                    <div>
-                        <button type="button" class="btn btn-primary" onClick="Bayar()"><i class="fa fa-money-bill"></i>
-                            Cash</button>
-                        <button type="button" class="btn btn-success" id="pay-button"><i class="fa fa-credit-card"></i>
-                            Online
-                            Payment</button>
-                    </div>
-
-                </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal-order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal" id="modal-order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body text-start text-black p-4">
-                    <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">No Meja XXX</h5>
+                    <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">No Meja {{ $no_meja }}</h5>
                     <h4 class="mb-5" style="color: #35558a;">Thanks for your order</h4>
                     <p class="mb-0" style="color: #35558a;">List Pesanan</p>
                     <hr class="mt-2 mb-4"
                         style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
-
                     <div id="ListOrder"></div>
 
 
                 </div>
                 <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
-                    <button type="button" class="btn btn-primary btn-lg mb-1" style="background-color: #35558a;">
+                    <button type="button" class="btn btn-primary btn-lg mb-1" onClick="PesananDiterima()"
+                        style="background-color: #35558a;">
                         Track your order
                     </button>
                 </div>
@@ -141,6 +117,8 @@
 @endsection
 @section('script')
     <script type="text/javascript">
+        $('#loading-indicator').hide();
+
         @foreach ($tmp as $value)
             $("#jumlah{{ $value->id_menu }}").val("{{ $value->qty }}");
         @endforeach
@@ -176,6 +154,23 @@
             $('#modal-checkout').modal('hide');
         }
 
+        function PesananDiterima() {
+            $.confirm({
+                title: 'Confirmation',
+                content: 'Apakah anda yakin ?',
+                buttons: {
+                    confirm: function() {
+                        location.reload();
+                    },
+                    cancel: function() {
+                        // Code to execute if the user cancels
+                        // ...
+                    }
+                }
+            });
+
+        }
+
         function TambahPesanan(qty, idmenu) {
             var data = {
                 'id_menu': idmenu,
@@ -183,7 +178,8 @@
                 "qty": qty,
                 "total": 0
             }
-
+            $('#loading-indicator').show();
+            $('button').prop('disabled', true);
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -194,6 +190,8 @@
                 dataType: "JSON",
                 success: function() {
 
+                    $('button').prop('disabled', false);
+                    $('#loading-indicator').hide();
                     $("#lblCartCount").load("{{ url('jumlah-pesanan') }}");
                     $("#listmenu").load("{{ url('list-pesanan') }}");
                     toastr.success('Keranjang berhasil diperbarui', 'Berhasil');
@@ -203,11 +201,14 @@
         }
 
         function DeleteDataKeranjang(id_transaksi, id_menu) {
+            // alert(id_transaksi + id_menu);
             var data = {
                 'id_menu': id_menu,
                 'no_transaksi': id_transaksi
 
             }
+            $('#loading-indicator').show();
+            $('button').prop('disabled', true);
 
             $.ajax({
                 headers: {
@@ -218,6 +219,8 @@
                 data: data,
                 dataType: "JSON",
                 success: function() {
+                    $('#loading-indicator').hide();
+                    $('button').prop('disabled', false);
 
                     $("#lblCartCount").load("{{ url('jumlah-pesanan') }}");
                     $("#listmenu").load("{{ url('list-pesanan') }}");
@@ -230,18 +233,61 @@
 
         function Bayar() {
 
-            $('#modal-checkout').modal('hide');
-            $("#modal-order").modal('show');
-            $("#ListOrder").load("{{ url('order') }}");
+            var nama = $("#nama_pemesanan").val();
+            var email = $("#email_pemesanan").val();
+            var telp = $("#telp_pemesanan").val();
+
+            if (nama != "" && email != "" && telp != "") {
+                $.confirm({
+                    title: 'Confirmation',
+                    content: 'Are you sure you want to proceed?',
+                    buttons: {
+                        confirm: function() {
+                            $('#loading-indicator').show();
+                            $('button').prop('disabled', true);
+
+                            $('#modal-checkout').modal('hide');
+                            $("#modal-order").modal('show');
+                            $("#ListOrder").load("{{ url('order') }}");
+                            // Code to execute if the user confirms
+                            // ...
+                        },
+                        cancel: function() {
+                            // Code to execute if the user cancels
+                            // ...
+                        }
+                    }
+                });
+            } else {
+                alert("Nama,Email,Telp Harus diisikan");
+            }
+
+
         }
 
         function UpdateNotes(id) {
+            // alert(id);
             var notes = $("#notes" + id).val();
+
+            // var email = $("#email_pemesanan").val();
+            // if (email != "") {
+            //     var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            //     if (!emailRegex.test(email)) {
+            //         alert('Email tidak valid');
+            //         $("#email_pemesanan").val("");
+            //     }
+            // }
+            // alert(notes);
             var data = {
                 'id': id,
-                "notes": notes
-
+                "notes": notes,
+                "nama_pemesanan": $("#nama_pemesanan").val(),
+                "email_pemesanan": $("#email_pemesanan").val(),
+                "telp_pemesanan": $("#telp_pemesanan").val()
             }
+            $('#loading-indicator').show();
+            $('button').prop('disabled', true);
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -251,39 +297,16 @@
                 data: data,
                 dataType: "JSON",
                 success: function() {
+                    $('#loading-indicator').hide();
+                    $('button').prop('disabled', false);
 
                     $("#lblCartCount").load("{{ url('jumlah-pesanan') }}");
                     $("#listmenu").load("{{ url('list-pesanan') }}");
 
-                    toastr.error('Data berhasil dihapus', 'Berhasil');
+                    toastr.success('Notes berhasil diperbarui', 'Berhasil');
                     //$('.tampildata').load("tampil.php");
                 }
             });
         }
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay('{{ $snap_token }}', {
-                onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment success!");
-                    console.log(result);
-                },
-                onPending: function(result) {
-                    /* You may add your own implementation here */
-                    alert("wating your payment!");
-                    console.log(result);
-                },
-                onError: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment failed!");
-                    console.log(result);
-                },
-                onClose: function() {
-                    /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
-                }
-            })
-        });
     </script>
 @endsection

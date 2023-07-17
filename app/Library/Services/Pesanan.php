@@ -2,6 +2,8 @@
 
 namespace App\Library\Services;
 
+use App\Models\User;
+use App\Notifications\NewOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,12 +12,16 @@ class Pesanan
 {
     static function GetFakturTmp(Request $request)
     {
+
+        // $request->session()->forget('fakturs');
+
         $noFaktur = $request->session()->get('fakturs');
+
         if ($noFaktur == "") {
             $vaFaktur = DB::table("fakturs")->where('kode', 'FakturTmp')->first();
             $noFaktur = $vaFaktur->keterangan + 1;
             $vaFaktur = DB::table("fakturs")->where('kode', 'FakturTmp')->update(["keterangan" => $noFaktur]);
-            $noFaktur = "MLG" . str_pad($noFaktur, 10, "0", STR_PAD_LEFT);
+            $noFaktur = "MLG-" . date("Ymd") . "-" . str_pad($noFaktur, 10, "0", STR_PAD_LEFT);
             $request->session()->put('fakturs', $noFaktur);
         }
         return $noFaktur;
@@ -25,8 +31,15 @@ class Pesanan
         $vaFaktur = DB::table("fakturs")->where('kode', 'Faktur')->first();
         $noFaktur = $vaFaktur->keterangan + 1;
         $vaFaktur = DB::table("fakturs")->where('kode', 'Faktur')->update(["keterangan" => $noFaktur]);
-        $noFaktur = "MLG" . str_pad($noFaktur, 10, "0", STR_PAD_LEFT);
+        $noFaktur = "MLG-" . date("Ymd") . "-" . str_pad($noFaktur, 10, "0", STR_PAD_LEFT);
 
         return $noFaktur;
+    }
+    static function Notif($vaId)
+    {
+        $users = User::whereIn("id", $vaId)->get();
+        foreach ($users as $user) {
+            $user->notify(new NewOrder(["Order Pesanan"]));
+        }
     }
 }
