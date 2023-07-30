@@ -107,8 +107,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Harga</label>
                             <div class="col-sm-9">
-                                <input type="text" name="harga_menu" class="form-control" id="harga"
-                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <input type="text" name="harga_menu" class="form-control" id="harga">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -158,8 +157,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Harga</label>
                             <div class="col-sm-9">
-                                <input type="text" name="harga_menu" id="harga_menu" class="form-control"
-                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                <input type="text" name="harga_menu" id="harga_menu" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">

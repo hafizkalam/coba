@@ -7,15 +7,12 @@
     <p class="mb-0" style="color: #35558a;">List Pesanan</p>
     <hr class="mt-2 mb-4"
         style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
-<<<<<<< HEAD
 @else
     <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">No Meja {{ $no_meja }}</h5>
     <h4 class="mb-5" style="color: #35558a;">Thanks for your order</h4>
     <p class="mb-0" style="color: #35558a;">List Pesanan</p>
     <hr class="mt-2 mb-4"
         style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 @endif
 
 <div class="d-flex justify-content-between">
@@ -44,9 +41,6 @@ $total = 0;
     <span class="badge badge-primary">Menuggu Otorisasi</span>
 </div>
 <script>
-    $('#loading-indicator').hide();
-    $('button').prop('disabled', false);
-
     setInterval(function() {
         cekStatus();
     }, 3000);
@@ -54,9 +48,6 @@ $total = 0;
     function cekStatus() {
         $("#statusOrder").load("{{ url('order-status/' . $faktur) }}");
     }
-<<<<<<< HEAD
     // $('#loading-indicator').hide();
     // $('button').prop('disabled', false);
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 </script>

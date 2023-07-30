@@ -26,7 +26,6 @@ class AdminController extends Controller
         $level = Auth::user()->level;
         $idTenant = Auth::user()->id;
         $tenant = MasterTenant::where("user_id", $idTenant)->first();
-<<<<<<< HEAD
         $filter = $request->all();
         if (count($filter) > 0) {
             $tgl = $filter['tahun'] . '-' .  $filter['bulan'] . '-01';
@@ -44,45 +43,17 @@ class AdminController extends Controller
         for ($i = 1; $i <= $tgl_akhir; $i++) {
             $tgl_filter = date("Y-m-d", strtotime($periode . "-$i"));
             if ($level == 2) {
-=======
-        // $filter = $request->all();
-        // if (count($filter) > 0) {
-        //     $tgl = $filter['tahun'] . '-' .  $filter['bulan']. '-01';
-        //     $periode = $filter['tahun'] . '-' .  $filter['bulan'];
-        //     $tgl_akhir = date("t", strtotime($tgl));
-        // }
-        // else {
-        //     $periode = date('Y-m');
-        //     $tgl_akhir = date("d");
-        // }
-        $periode = date('Y-m');
-        $tgl_akhir = date("d");
-
-        for ($i = 1; $i <= $tgl_akhir; $i++) {
-            $tgl_filter = date("Y-m-d", strtotime($periode . "-$i" ));
-            if ($level != 1) {
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
                 $transaksi = DB::table('transaksis')->join("transaksi_details", "transaksi_details.no_transaksi", "=", "transaksis.no_transaksi")
                     ->join("menus", "menus.id", "=", "transaksi_details.id_menu")
                     ->select(DB::raw('ifnull(sum(transaksi_details.total),0) as total'))
                     ->where('tgl_transaksi', $tgl_filter)
-<<<<<<< HEAD
                     ->where('status_pembayaran', 1)
                     ->where("menus.master_tenants_id", $tenant->id)->first();
             } else {
                 $transaksi = DB::table('transaksis')
                     ->select(DB::raw('ifnull(sum(total),0) as total'))
                     ->where('status_pembayaran', 1)
-=======
-                    ->where('status_pembayaran',1)
-                    ->where("menus.master_tenants_id", $tenant->id)->first();
-
-            } else {
-                $transaksi = DB::table('transaksis')
-                    ->select(DB::raw('ifnull(sum(total),0) as total'))
-                    ->where('status_pembayaran',1)
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                     ->where('tgl_transaksi', $tgl_filter)->first();
             }
             $tanggal[] = $i;

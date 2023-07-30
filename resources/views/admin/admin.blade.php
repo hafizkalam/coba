@@ -42,15 +42,6 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown" id="notif">
 
-<<<<<<< HEAD
-=======
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
-                        role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                 </li>
                 <!-- Navbar Search -->
                 <form method="POST" action="{{ route('logout') }}">
@@ -150,7 +141,6 @@
     <script src="{{ asset('/') }}plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 
     <script src="{{ asset('/') }}plugins/chart.js/Chart.min.js"></script>
-<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -176,14 +166,6 @@
 
     <script>
         //  $("#notif").load("{{ url('notif') }}");
-=======
-
-    @section('script')
-    @show
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script>
-        $("#notif").load("{{ url('notif') }}");
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         // Enable pusher logging - don't include this in production
         setInterval(function() {
             cekStatus();
@@ -191,7 +173,6 @@
 
         function cekStatus() {
             $("#notif").load("{{ url('notif') }}");
-<<<<<<< HEAD
 
         }
 
@@ -203,8 +184,6 @@
                 volume: 0.5, // Adjust the volume level (0.0 to 1.0)
             });
             sound.play();
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         }
     </script>
     <script>

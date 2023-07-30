@@ -97,34 +97,21 @@
     <div class="form-group row">
         <div class="col-sm-12">
             <input type="text" name="nama" id="nama_pemesanan" value="{{ $nama_pemesanan }}"
-<<<<<<< HEAD
                 placeholder="Masukkan Nama" class="form-control">
-=======
-                placeholder="Masukkan Nama" class="form-control" onChange="UpdateNotes('999999999')">
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-12">
             <input type="email" name="email" id="email_pemesanan" value="{{ $email_pemesanan }}"
-<<<<<<< HEAD
                 placeholder="Masukkan Email" class="form-control">
-=======
-                placeholder="Masukkan Email" class="form-control" onChange="UpdateNotes('999999999')">
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         </div>
     </div>
 
     <div class="form-group row">
         <div class="col-sm-12">
-<<<<<<< HEAD
             <input type="number" name="noTelp" value="{{ $telp_pemesanan }}" id="telp_pemesanan"
                 placeholder="Masukkan No Telefon" onblur="UpdateNotes('99999999')" class="form-control">
-=======
-            <input type="text" name="noTelp" value="{{ $telp_pemesanan }}" id="telp_pemesanan"
-                placeholder="Masukkan No Telefon" class="form-control" onChange="UpdateNotes('999999999')">
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         </div>
     </div>
 
@@ -139,14 +126,11 @@
 </div>
 
 <script>
-<<<<<<< HEAD
     $('#loading-indicator').hide();
     $('button').prop('disabled', false);
     @if ($totalHarga <= 0)
         $("#tombolCheckout").prop('disabled', true);
     @endif
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function() {
         var nama = $("#nama_pemesanan").val();
@@ -160,12 +144,8 @@
 
                     $('#modal-checkout').modal('hide');
                     $("#modal-order").modal('show');
-<<<<<<< HEAD
                     order(result.order_id);
                     // $("#ListOrder").load("{{ url('order/') }}" + "/" + );
-=======
-                    $("#ListOrder").load("{{ url('order/') }}" + "/" + result.order_id);
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                 },
                 onPending: function(result) {
                     /* You may add your own implementation here */

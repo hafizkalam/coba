@@ -88,7 +88,6 @@
     <div class="modal" id="modal-checkout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
             <div class="modal-content" id="listmenu">
-<<<<<<< HEAD
 
             </div>
         </div>
@@ -110,39 +109,14 @@
     <div class="modal" id="modal-review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-bs-backdrop="static" data-bs-keyboard="false">
 
-=======
-
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="modal-order" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-        data-bs-backdrop="static" data-bs-keyboard="false">
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         <div class="modal-dialog">
 
             <div class="modal-content">
-<<<<<<< HEAD
 
                 <div class="modal-header">
 
                     <button type="button" class="close" onclick="CloseReview()" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-=======
-                <div class="modal-body text-start text-black p-4">
-                    <h5 class="modal-title text-uppercase mb-5" id="exampleModalLabel">No Meja {{ $no_meja }}</h5>
-                    <h4 class="mb-5" style="color: #35558a;">Thanks for your order</h4>
-                    <p class="mb-0" style="color: #35558a;">List Pesanan</p>
-                    <hr class="mt-2 mb-4"
-                        style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
-                    <div id="ListOrder"></div>
-
-
-                </div>
-                <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
-                    <button type="button" class="btn btn-primary btn-lg mb-1" onClick="PesananDiterima()"
-                        style="background-color: #35558a;">
-                        Track your order
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                     </button>
                 </div>
                 <div class="modal-body" id="isi-review">
@@ -155,7 +129,6 @@
 @endsection
 @section('script')
     <script type="text/javascript">
-<<<<<<< HEAD
         setInterval(function() {
             cekTombolStatus();
         }, 3000);
@@ -163,8 +136,6 @@
         function cekTombolStatus() {
             $("#TombolOrder").load("{{ url('tombol-order/') }}");
         }
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         $('#loading-indicator').hide();
 
         @foreach ($tmp as $value)
@@ -202,7 +173,6 @@
 
         function PesananDiterima() {
             $.confirm({
-<<<<<<< HEAD
                 title: 'Konfirmasi',
                 content: 'Apakah anda yakin ?',
                 buttons: {
@@ -210,15 +180,6 @@
                         location.reload();
                     },
                     Tidak: function() {
-=======
-                title: 'Confirmation',
-                content: 'Apakah anda yakin ?',
-                buttons: {
-                    confirm: function() {
-                        location.reload();
-                    },
-                    cancel: function() {
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                         // Code to execute if the user cancels
                         // ...
                     }
@@ -350,39 +311,6 @@
             }
 
 
-<<<<<<< HEAD
-=======
-            var nama = $("#nama_pemesanan").val();
-            var email = $("#email_pemesanan").val();
-            var telp = $("#telp_pemesanan").val();
-
-            if (nama != "" && email != "" && telp != "") {
-                $.confirm({
-                    title: 'Confirmation',
-                    content: 'Are you sure you want to proceed?',
-                    buttons: {
-                        confirm: function() {
-                            $('#loading-indicator').show();
-                            $('button').prop('disabled', true);
-
-                            $('#modal-checkout').modal('hide');
-                            $("#modal-order").modal('show');
-                            $("#ListOrder").load("{{ url('order') }}");
-                            // Code to execute if the user confirms
-                            // ...
-                        },
-                        cancel: function() {
-                            // Code to execute if the user cancels
-                            // ...
-                        }
-                    }
-                });
-            } else {
-                alert("Nama,Email,Telp Harus diisikan");
-            }
-
-
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         }
 
         function UpdateNotes(id) {
@@ -405,13 +333,8 @@
                 "email_pemesanan": $("#email_pemesanan").val(),
                 "telp_pemesanan": $("#telp_pemesanan").val()
             }
-<<<<<<< HEAD
             // $('#loading-indicator').show();
             // $('button').prop('disabled', true);
-=======
-            $('#loading-indicator').show();
-            $('button').prop('disabled', true);
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
             $.ajax({
                 headers: {
@@ -422,22 +345,15 @@
                 data: data,
                 dataType: "JSON",
                 success: function() {
-                    $('#loading-indicator').hide();
-                    $('button').prop('disabled', false);
 
                     $("#lblCartCount").load("{{ url('jumlah-pesanan') }}");
                     $("#listmenu").load("{{ url('list-pesanan') }}");
 
-<<<<<<< HEAD
                     // toastr.success('Notes berhasil diperbarui', 'Berhasil');
-=======
-                    toastr.success('Notes berhasil diperbarui', 'Berhasil');
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                     //$('.tampildata').load("tampil.php");
                 }
             });
         }
-<<<<<<< HEAD
 
         function Review(id) {
             $('#loading-indicator').show();
@@ -448,7 +364,5 @@
         function CloseReview() {
             $('#modal-review').modal('hide');
         }
-=======
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
     </script>
 @endsection

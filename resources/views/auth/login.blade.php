@@ -7,11 +7,7 @@
 
         <!-- Email Address -->
         <div>
-<<<<<<< HEAD
             <x-input-label for="email" :value="__('Email')" />
-=======
-            <x-input-label for="email" :value="__('Name')" />
->>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
             <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('email')" required
                 autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />

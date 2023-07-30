@@ -12,10 +12,7 @@ if (!function_exists('globalFunction')) {
         $total = DB::table('rating_comments')
             ->select(DB::raw('count(rating) as total'))
             ->where('id_menu', $id_menu)->first();
-        if($rating->rating > 0){
 
         echo number_format($rating->rating / $total->total, 1, '.', '');
-        }
-
     }
 }
