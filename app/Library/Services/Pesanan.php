@@ -2,7 +2,10 @@
 
 namespace App\Library\Services;
 
+<<<<<<< HEAD
 use App\Events\NewMessage;
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 use App\Models\User;
 use App\Notifications\NewOrder;
 use Illuminate\Http\Request;
@@ -38,10 +41,17 @@ class Pesanan
     }
     static function Notif($vaId)
     {
+<<<<<<< HEAD
         $users = User::whereIn("id", $vaId)->orWhere('level', 3)->orWhere('level', 1)->get();
         foreach ($users as $user) {
             $user->notify(new NewOrder(["Order Pesanan"]));
         }
         event(new NewMessage('hello world'));
+=======
+        $users = User::whereIn("id", $vaId)->get();
+        foreach ($users as $user) {
+            $user->notify(new NewOrder(["Order Pesanan"]));
+        }
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
     }
 }

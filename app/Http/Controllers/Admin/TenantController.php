@@ -43,9 +43,12 @@ class TenantController extends Controller
             $data['status'] = 0;
         }
         MasterTenant::where("user_id", $id)->update($data);
+<<<<<<< HEAD
         unset($data['status']);
         User::where('id', $id)->update($data);
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         return redirect('/info-tenant');
     }
 

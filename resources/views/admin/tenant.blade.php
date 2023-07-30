@@ -52,6 +52,16 @@
                                         </div>
                                     </div>
 
+<<<<<<< HEAD
+=======
+                                    <div class="form-group row">
+                                        <label for="inputPassword3" class="col-sm-4 col-form-label">Ganti Password</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="password" class="form-control">
+                                        </div>
+                                    </div>
+
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                     <div class="form-group row">
                                         <label for="inputPassword3" class="col-sm-4 col-form-label">Status Tenant</label>
                                         <div class="col-sm-8">

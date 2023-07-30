@@ -127,6 +127,7 @@
         <div class="content">
             <div class="title-laporan">
                 <h3>Laporan Transaksi</h3>
+<<<<<<< HEAD
                 @if (isset($filter['awal']))
                     <p>Tanggal {{ $filter['awal'] . ' s/d ' . $filter['akhir'] }}</p>
                 @else
@@ -135,18 +136,25 @@
             </div>
             <div class="header">
 
+=======
+                <p>Tanggal 01-07-2023 s/d 31-07-2023</p>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
             </div>
             <table class="data">
                 <tr>
                     <th width="30px">No</th>
+<<<<<<< HEAD
                     <th width="30px">Nama Pemesan</th>
                     <th width="30px">Email Pemesan</th>
                     <th width="30px">No Telp Pemesan </th>
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                     <th width="90px">No Transaksi</th>
                     <th width="80px">Tgl</th>
                     <th width="80px"> No Meja</th>
                     <th width="100px">Total</th>
                     <th width="100px">Cara Pembayaran</th>
+<<<<<<< HEAD
                 </tr>
                 <?php $n = 0;
                 $totalHarga = 0; ?>
@@ -190,6 +198,36 @@
                                     @if (Auth::user()->level == '1' || Auth::user()->level == '3')
                                         <th>Nama Tenant</th>
                                     @endif
+=======
+                    <th width="100px">Otorisasi</th>
+                </tr>
+                <?php $n = 0; ?>
+                @foreach ($data as $value)
+                    <?php $n++; ?>
+                    <tr>
+                        <td align="center">{{ $n }}</td>
+                        <td align="center">{{ $value['no_transaksi'] }}</td>
+                        <td align="center">{{ date('d-m-Y', strtotime($value['tgl_transaksi'])) }}</td>
+                        <td>{{ $value['no_meja'] }}</td>
+                        <td align="right">{{ number_format($value['total']) }}</td>
+                        <td>{{ $value['cara_pembayaran'] }}
+                        </td>
+                        <td>
+                            @if ($value['status_pembayaran'] == 0)
+                                Menunggu Otorisasi
+                            @elseif ($value['status_pembayaran'] == 1)
+                                Disetujui
+                            @else
+                                Ditolak
+                            @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td colspan="6" align="center">
+                            <table id="customers">
+                                <tr>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                     <th>Nama Menu</th>
                                     <th>Harga</th>
                                     <th>Qty</th>
@@ -197,6 +235,7 @@
                                     <th>Notes</th>
                                 </tr>
                                 @foreach ($value['detail'] as $value1)
+<<<<<<< HEAD
                                     @if (Auth::user()->level == 2)
                                         @if ($value1['menu']['master_tenants_id'] == @$tenant->id)
                                             <?php
@@ -252,10 +291,22 @@
                                     @endif
                                 @endforeach
 
+=======
+                                    <tr>
+                                        <td>{{ $menu[$value1['id_menu']]['name'] }}</td>
+                                        <td>{{ $value1['qty'] }}</td>
+                                        <td>{{ number_format($menu[$value1['id_menu']]['harga']) }}
+                                        </td>
+                                        <td>{{ number_format($value1['total']) }}</td>
+                                        <td>{{ $value1['notes'] }}</td>
+                                    </tr>
+                                @endforeach
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                             </table>
                         </td>
                     </tr>
                 @endforeach
+<<<<<<< HEAD
                 <tr>
                     <td colspan="8">
                         <b>TOTAL PENDAPATAN</b>
@@ -264,6 +315,8 @@
                         {{ number_format($totalHarga) }}
                     </td>
                 </tr>
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
             </table>
         </div>
 

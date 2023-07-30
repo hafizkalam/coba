@@ -27,9 +27,13 @@
                         <div class="card-header">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#modal-default"><i
                                     class="fa fa-eye"></i> Filter</button>
+<<<<<<< HEAD
                             @if (Auth::user()->level == '1' || Auth::user()->level == '2')
                                 <a href="{{ url('print') }}" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
                             @endif
+=======
+                            <a href="{{ url('print') }}" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -38,13 +42,20 @@
                                     <tr>
                                         <th>Tanggal Transaksi</th>
                                         <th>No Transaksi</th>
+<<<<<<< HEAD
                                         <th>Nama Pemesan</th>
                                         <th>Email Pemesan</th>
                                         <th>Telp Pemesan</th>
+=======
+                                        <th>Nama Pemesanan</th>
+                                        <th>Email Pemesanan</th>
+                                        <th>Telp Pemesanan</th>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                         <th>No Meja</th>
                                         <th>Total</th>
                                         <th>Cara Pembayaran</th>
                                         <th>Status Pembayaran</th>
+                                        <th>Otorisasi</th>
                                         <th>Detail</th>
                                     </tr>
                                 </thead>
@@ -55,11 +66,16 @@
                                         $total = 0; ?>
                                         <tr>
                                             @foreach ($value['detail'] as $value1)
+<<<<<<< HEAD
                                                 @if (Auth::user()->level == 2)
+=======
+                                                @if (Auth::user()->level != 1)
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                                     @if ($value1['menu']['master_tenants_id'] == $tenant->id)
                                                         <?php $total += $value1['total']; ?>
                                                     @endif
                                                 @else
+<<<<<<< HEAD
                                                     @if (isset($id_filter_tenant))
                                                         @if ($value1['menu']['master_tenants_id'] == @$id_filter_tenant)
                                                             <?php $total += $value1['total']; ?>
@@ -67,6 +83,9 @@
                                                     @else
                                                         <?php $total += $value1['total']; ?>
                                                     @endif
+=======
+                                                    <?php $total += $value1['total']; ?>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                                 @endif
                                             @endforeach
                                             <td>{{ $value['tgl_transaksi'] }}</td>
@@ -76,6 +95,7 @@
                                             <td>{{ $value['telp_pemesan'] }}</td>
                                             <td>{{ $value['no_meja'] }}</td>
                                             <td>{{ number_format($total) }}</td>
+<<<<<<< HEAD
                                             <td><span class="badge badge-primary">{{ $value['cara_pembayaran'] }}
                                                 </span>
                                             </td>
@@ -111,6 +131,36 @@
                                                         @if (Auth::user()->level != '2')
                                                             <th>Nama Tenant</th>
                                                         @endif
+=======
+                                            <td><span class="badge badge-primary">{{ $value['cara_pembayaran'] }} </span>
+                                            </td>
+                                            <td>
+                                                @if ($value['status_pembayaran'] == 0)
+                                                    <span class="badge badge-warning"> Menunggu Otorisasi</span>
+                                                @elseif ($value['status_pembayaran'] == 1)
+                                                    <span class="badge badge-success"> Disetujui</span>
+                                                @else
+                                                    <span class="badge badge-danger"> Ditolak</span>
+                                                @endif
+                                            <td>
+                                                @if ($value['status_pembayaran'] != 0)
+                                                    <span class="badge badge-info"> Telah Diotorisasi</span>
+                                                @else
+                                                    <button class="btn btn-success"
+                                                        onClick="Otorisasi('{{ $value['no_transaksi'] }}','1')"><i
+                                                            class="fa fa-check"> </i></button>
+                                                    <button class="btn btn-danger"
+                                                        onClick="Otorisasi('{{ $value['no_transaksi'] }}','2')"><i
+                                                            class="fa fa-times">
+                                                        </i></button>
+                                                @endif
+
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <th>Nama Tenant</th>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                                         <th>Nama Menu</th>
                                                         <th>Harga</th>
                                                         <th>Qty</th>
@@ -118,6 +168,7 @@
                                                         <th>Notes</th>
                                                     </tr>
                                                     @foreach ($value['detail'] as $value1)
+<<<<<<< HEAD
                                                         @if (Auth::user()->level == 2)
                                                             @if ($value1['menu']['master_tenants_id'] == @$tenant->id)
                                                                 <tr>
@@ -145,6 +196,10 @@
                                                                     </tr>
                                                                 @endif
                                                             @else
+=======
+                                                        @if (Auth::user()->level != 1)
+                                                            @if ($value1['menu']['master_tenants_id'] == $tenant->id)
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                                                 <tr>
                                                                     <td>{{ $nama_tenant[$value1['menu']['master_tenants_id']] }}
                                                                     </td>
@@ -156,6 +211,18 @@
                                                                     <td>{{ $value1['notes'] }}</td>
                                                                 </tr>
                                                             @endif
+<<<<<<< HEAD
+=======
+                                                        @else
+                                                            <tr>
+                                                                <td>{{ $menu[$value1['id_menu']]['name'] }}</td>
+                                                                <td>{{ $value1['qty'] }}</td>
+                                                                <td>{{ number_format($menu[$value1['id_menu']]['harga']) }}
+                                                                </td>
+                                                                <td>{{ number_format($value1['total']) }}</td>
+                                                                <td>{{ $value1['notes'] }}</td>
+                                                            </tr>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                                         @endif
                                                     @endforeach
                                                 </table>
@@ -200,13 +267,20 @@
                                 <input type="date" class="form-control" name="akhir" value="{{ date('Y-m-t') }}">
                             </div>
                         </div>
+<<<<<<< HEAD
                         @if (Auth::user()->level == '1' || Auth::user()->level == '3')
+=======
+                        @if (Auth::user()->level == '1')
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                             <div class="form-group row">
                                 <label for="name" class="col-sm-3 col-form-label">Tenant</label>
                                 <div class="col-sm-6">
                                     <select class="custom-select form-control-border" id="exampleSelectBorder"
                                         name="filter-tenant">
+<<<<<<< HEAD
                                         <option value="">Semua Tenant</option>
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                         @foreach ($nama_tenant as $key => $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
@@ -262,6 +336,7 @@
         </div>
 
     </div>
+<<<<<<< HEAD
     <div class="modal" id="hitung" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
         data-bs-backdrop="static" data-bs-keyboard="false">
 
@@ -301,12 +376,15 @@
             </div>
         </div>
     </div>
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 @endsection
 
 @section('script')
     <script>
         $("#example1").DataTable({
             responsive: true,
+<<<<<<< HEAD
 
             order: [
                 [1]
@@ -317,6 +395,17 @@
             var data = {
                 'faktur': $("#id_transaksi").val(),
                 "acc": $("#acc").val()
+=======
+            order: [
+                [1, 'desc']
+            ]
+        });
+
+        function Otorisasi(faktur, acc) {
+            var data = {
+                'faktur': faktur,
+                "acc": acc
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
             }
             $.ajax({
@@ -334,6 +423,7 @@
                 }
             });
         }
+<<<<<<< HEAD
 
         function Hitung() {
 
@@ -386,5 +476,7 @@
             }
 
         }
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
     </script>
 @endsection

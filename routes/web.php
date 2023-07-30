@@ -56,9 +56,12 @@ Route::get('list-pesanan', [TransaksiTmpController::class, 'list']);
 Route::post('notes-pesanan', [TransaksiTmpController::class, 'notespesanan']);
 Route::get('order/{id?}', [TransaksiTmpController::class, 'order']);
 Route::get('order-status/{id}', [TransaksiTmpController::class, 'orderstatus']);
+<<<<<<< HEAD
 Route::get('tombol-order/', [TransaksiTmpController::class, 'tombolstatus']);
 Route::post('rating', [TransaksiTmpController::class, 'rating']);
 Route::get('review/{id}', [TransaksiTmpController::class, 'review']);
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
 Route::post('/payment', [WebController::class, 'payment_post']);
 Route::get('viewmenu/{id}', [WebController::class, 'showmenu']);

@@ -23,6 +23,15 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
+<<<<<<< HEAD
+=======
+                        <div class="card-header">
+                            <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                                data-target="#modal-tambah">
+                                Tambah
+                            </button>
+                        </div>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -30,6 +39,10 @@
                                     <tr>
                                         <th>Nama</th>
                                         <th>Desc</th>
+<<<<<<< HEAD
+=======
+                                        <th>Profile</th>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                         <th>Nonaktifkan</th>
                                     </tr>
                                 </thead>
@@ -40,6 +53,10 @@
                                         <tr>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->desc }}</td>
+<<<<<<< HEAD
+=======
+                                            <td><img width="100px" src="{{ url('storage/' . $value->foto) }}">
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                                             </td>
                                             <td><input type="checkbox" name="my-checkbox"
                                                     @if ($value->status != 2) checked @endif
@@ -72,10 +89,30 @@
             $("#id").val(data[0]);
             $("#name_menu").val(data[2]);
             $("#harga_menu").val(data[3]);
+<<<<<<< HEAD
             $("#desc_menu").val(data[4]);
             // alert(data[2]);
         });
 
+=======
+            $("#foto_menu").val(data[4]);
+            $("#desc_menu").val(data[5]);
+            // alert(data[2]);
+        });
+        $("#harga").on("change", function() {
+            $("#harga").val(formatRupiah(this.value));
+        });
+        $("#harga_menu").on("change", function() {
+            $("#harga_menu").val(formatRupiah(this.value));
+        });
+
+
+
+        function StatusMenu(id) {
+            var isChecked = $(this).prop("checked");
+            alert(id);
+        }
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         $("input[data-bootstrap-switch]").each(function() {
             $(this).bootstrapSwitch('state', $(this).prop('checked'));
         });
@@ -97,6 +134,14 @@
                 dataType: "JSON",
                 success: function() {
 
+<<<<<<< HEAD
+=======
+                    //$("#lblCartCount").load("{{ url('jumlah-pesanan') }}");
+                    //$("#listmenu").load("{{ url('list-pesanan') }}");
+
+                    // toastr.error('Data berhasil dihapus', 'Berhasil');
+                    //$('.tampildata').load("tampil.php");
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                 }
             });
         });

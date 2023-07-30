@@ -4,7 +4,11 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
+<<<<<<< HEAD
     <title>Njenggrik Coffe</title>
+=======
+    <title>Njenggrik Coffee</title>
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 </head>
 
 <body>

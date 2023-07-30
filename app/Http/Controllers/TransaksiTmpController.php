@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Library\Services\Pesanan;
 use App\Mail\SendEmail;
 use App\Models\MasterTenant;
+<<<<<<< HEAD
 use App\Models\RatingComment;
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 use App\Models\Transaksi;
 use App\Models\TransaksiDetail;
 use App\Models\TransaksiTmp;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\View;
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -73,7 +79,10 @@ class TransaksiTmpController extends Controller
             TransaksiTmp::with(['menu'])->where('no_transaksi', $data['noFaktur'])->delete();
             $data['tmp'] = TransaksiDetail::where('no_transaksi', $faktur)->get();
             $data['faktur'] = $faktur;
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
             Pesanan::Notif($vaUser);
         } else {
             $data['cara_pembayaran'] = 'online';
@@ -90,17 +99,24 @@ class TransaksiTmpController extends Controller
         $data['tmp'] = TransaksiDetail::where('no_transaksi', $faktur)->get();
         $data['faktur'] = $faktur;
 
+<<<<<<< HEAD
         $request->session()->put('data_pesanan', $data);
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         Mail::to($data['email_pemesanan'])->send(new SendEmail($data));
 
         $request->session()->forget('fakturs');
         $request->session()->forget('nama_pemesanan');
         $request->session()->forget('email_pemesanan');
         $request->session()->forget('telp_pemesanan');
+<<<<<<< HEAD
 
         $data['html'] = View::make('layoutnew.order', $data)->render();
         echo json_encode($data);
+=======
+        return view('layoutnew.order', $data);
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
     }
     function jumlah(Request $request)
     {
@@ -133,6 +149,7 @@ class TransaksiTmpController extends Controller
             $total += $value->qty * $value->menu->harga;
         }
         $data['snap_token'] = "xxx";
+<<<<<<< HEAD
         $data['nama_pemesanan'] = $request->session()->get('nama_pemesanan');
         $data['email_pemesanan'] = $request->session()->get('email_pemesanan');
         $data['telp_pemesanan'] = $request->session()->get('telp_pemesanan');
@@ -164,6 +181,44 @@ class TransaksiTmpController extends Controller
                 $data['snap_token'] = \Midtrans\Snap::getSnapToken($params);
             }
         }
+=======
+        if ($total > 500) {
+            $data['nama_pemesanan'] = $request->session()->get('nama_pemesanan');
+            $data['email_pemesanan'] = $request->session()->get('email_pemesanan');
+            $data['telp_pemesanan'] = $request->session()->get('telp_pemesanan');
+
+            \Midtrans\Config::$serverKey = env('MIDTRANS_KEY');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+            $data['nama_pemesanan'] = $data['nama_pemesanan'] != "" ? $data['nama_pemesanan'] : "a";
+            if (!filter_var($data['email_pemesanan'], FILTER_VALIDATE_EMAIL)) {
+                $data['email_pemesanan'] =  "example@gmail.com";
+            }
+            $data['telp_pemesanan'] = $data['telp_pemesanan'] != "" ? $data['telp_pemesanan'] : "3";
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $noFaktur,
+                    'gross_amount' => $total,
+                ),
+                'item_details' => $item,
+                'customer_details' => array(
+                    'first_name' => $data['nama_pemesanan'],
+                    'email' =>  $data['email_pemesanan'],
+                    'phone' =>  $data['telp_pemesanan'],
+                ),
+            );
+
+
+            $data['snap_token'] = \Midtrans\Snap::getSnapToken($params);
+        }
+        $data['nama_pemesanan'] = $request->session()->get('nama_pemesanan');
+        $data['email_pemesanan'] = $request->session()->get('email_pemesanan');
+        $data['telp_pemesanan'] = $request->session()->get('telp_pemesanan');
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
         return view('layoutnew.list_keranjang', $data);
     }
@@ -178,19 +233,26 @@ class TransaksiTmpController extends Controller
                 $tmp = TransaksiTmp::with(['menu'])->where("no_transaksi", $request->order_id)->get()->toArray();
                 $total = 0;
                 $faktur = Pesanan::GetFaktur();
+<<<<<<< HEAD
                 $tenant = MasterTenant::get()->toArray();
                 $vaUser = [];
                 foreach ($tenant as $key => $value) {
                     $vaTenant[$value['id']] = $value['user_id'];
                 }
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                 foreach ($tmp as $value) {
                     $value['no_transaksi'] = $faktur;
                     $total += $value['qty'] * $value['menu']['harga'];
                     $value['total'] = $value['qty'] * $value['menu']['harga'];
                     TransaksiDetail::create($value);
+<<<<<<< HEAD
                     $vaUser[] = $vaTenant[$value['menu']['master_tenants_id']];
                 }
                 Pesanan::Notif($vaUser);
+=======
+                }
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
                 $vaTransaksi = array(
                     "no_transaksi" => $faktur,
                     "no_transaksi_tmp" => $request->order_id,
@@ -208,7 +270,10 @@ class TransaksiTmpController extends Controller
     }
     function orderstatus($faktur)
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         $data = Transaksi::where("no_transaksi", $faktur)->first();
         if ($data->status_pembayaran == 0) {
             echo "<span class='badge badge-primary'>Menuggu Otorisasi</span>";
@@ -219,6 +284,7 @@ class TransaksiTmpController extends Controller
         }
         //
     }
+<<<<<<< HEAD
     function tombolstatus(Request $request)
     {
 
@@ -257,4 +323,6 @@ class TransaksiTmpController extends Controller
         $data['data'] = RatingComment::where("id_menu", $id)->orderBy("id", "desc")->get()->toArray();
         return view("layoutnew.isireview", $data);
     }
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 }

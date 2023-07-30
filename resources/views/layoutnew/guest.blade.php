@@ -46,6 +46,7 @@
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="SET_YOUR_CLIENT_KEY_HERE"></script>
     <style>
+<<<<<<< HEAD
         @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
         * {
@@ -442,6 +443,8 @@
             }
         }
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         #loading-indicator {
             position: fixed;
             top: 50%;
@@ -450,8 +453,11 @@
             z-index: 9999;
         }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
         .btn-number {
             padding: 0.375rem 0.75rem;
         }
@@ -559,6 +565,7 @@
 
 
 
+<<<<<<< HEAD
             <button id="tombolCheckout" class="btn btn-warning" style="background-color:#ec2727; color: white;"
                 onclick="Checkout()"><i class="fa fa-shopping-cart"></i>
                 <span class='badge badge-warning' id='lblCartCount'> </span>
@@ -568,6 +575,8 @@
 
 
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
             <a class="btn-book-a-table" href="#book-a-table">Table: {{ $no_meja }}</a>
 
         </div>
@@ -764,6 +773,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-confirm@3.3.4/dist/jquery-confirm.min.js"></script>
+<<<<<<< HEAD
     <script>
         function Rating() {
             $("#modal-order").modal('hide');
@@ -797,6 +807,8 @@
             }
             $('.rating-component .starrate .ratevalue').val(msg);
 
+=======
+>>>>>>> fbb8abbb9401c66f114e4b4fda004e8580828cc6
 
 
             $(".fa-smile-wink").show();
