@@ -28,11 +28,12 @@
                         <form class="form-inline" action="create" method="POST">
                             @csrf
                             <div class="form-group mb-8">
-                                <input type="text" class="form-control" name="no_meja"
-                                    placeholder="Tambahkan Nomor Meja">
+                                <input type="number" class="form-control" name="no_meja" placeholder="Tambahkan Nomor Meja"
+                                    required>
                             </div>
                             <button type="submit" class="btn btn-primary ml-1 mb-2">Create</button>
                         </form>
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -78,6 +79,14 @@
 
 @section('script')
     <script>
+        @if (session('success'))
+            toastr.success('Data berhasil ditambahkan', 'Berhasil');
+        @endif
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}', 'Info');
+            @endforeach
+        @endif
         $("#example1").DataTable();
     </script>
 @endsection

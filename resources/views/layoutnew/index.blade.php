@@ -50,15 +50,12 @@
                 <h1>{{ $judulheader }}<span>.</span></h1>
             </a>
 
-            <nav id="navbar" class="navbar">
-                {{-- <ul>
-                    <li>
-                        <button class="bg-primary rounded-pill text-white">
-                            Table Number
-                        </button>
-                    </li>
-                </ul> --}}
-            </nav><!-- .navbar -->
+            <li>
+                <a href="{{ route('login') }}"
+                    class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                    in</a>
+            </li>
+
         </div>
     </header><!-- End Header -->
 
@@ -179,7 +176,19 @@
                     <div>
                         <h4>{{ $judulalamat }}</h4>
                         <p>
-                            {{ $alamat }}<br>
+                            {{ $alamat }} <br>
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links d-flex">
+                    <i class="bi bi-telephone icon"></i>
+                    <div>
+                        <h4>{{ $judulkontak }}</h4>
+                        <p>
+                            <strong>Phone:</strong> {{ $kontak }}<br>
+                            <strong>Email:</strong> {{ $email }}<br>
                         </p>
                     </div>
                 </div>
@@ -189,10 +198,21 @@
                     <div>
                         <h4>{{ $juduljamoperasional }}</h4>
                         <p>
-                            <strong>{{ $jamoperasional }}</strong>
+                            <strong>{{ $jamoperasional }}</strong><br>
                         </p>
                     </div>
                 </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Follow Us</h4>
+                    <div class="social-links d-flex">
+                        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
             </div>
         </div>
 

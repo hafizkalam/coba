@@ -17,12 +17,14 @@ class UserSeeder extends Seeder
         // $profilePath = storage_path('app/public/profile_users');
 
         $user = [
-            'name' => 'Admin',
+            ['name' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123'),
-            'level' => '1',
-            'profile' => 'images.jfif',
-            'desc' => 'Admin',
+            'level' => '1',],
+            ['name' => 'Kasir',
+            'email' => 'kasir@gmail.com',
+            'password' => bcrypt('123'),
+            'level' => '3',]
         ];
 
         DB::table('users')->insert($user);

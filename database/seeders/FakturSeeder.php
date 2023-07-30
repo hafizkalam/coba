@@ -15,14 +15,14 @@ class FakturSeeder extends Seeder
     {
         $faktur = [
             'kode' => 'Faktur',
-            'keterangan' => '1',
+            'keterangan' => '0',
         ];
 
         DB::table('fakturs')->insert($faktur);
 
         $faktur = [
             'kode' => 'FakturTmp',
-            'keterangan' => '1',
+            'keterangan' => '0',
         ];
         DB::table('fakturs')->insert($faktur);
     }

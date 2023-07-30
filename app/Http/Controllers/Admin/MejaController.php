@@ -22,18 +22,34 @@ class MejaController extends Controller
 
     public function create(Request $request)
     {
+        // $meja = new Meja;
+        // $meja->no_meja = $request->no_meja;
+        // $meja->save();
+        // return redirect('meja');
 
+        $inputNomorMeja = $request->input('no_meja');
 
-        $meja = new Meja;
-        $meja->no_meja = $request->no_meja;
-        $meja->save();
-        return redirect('meja');
+        // Check if the data already exists in the database
+        $existingMeja = Meja::where('no_meja', $inputNomorMeja)->first();
+
+        if ($existingMeja) {
+
+            // If data already exists, return an error response or redirect back with an error message
+            return redirect()->back()->withInput()->withErrors('Nomor meja sudah ada.');
+        }
+
+        // If the data doesn't exist, create a new record and save it to the database
+        Meja::create($request->all());
+
+        // Redirect to the index page or any other route after successful creation
+        return redirect('meja')->with('success', 'Meja berhasil ditambahkan!');
     }
 
     public function generate($id)
     {
         $data = Meja::findOrFail($id);
-        $qrcode = QrCode::size(300)->generate("http://127.0.0.1:8000/viewmenu/" . "$data->no_meja");
+        $encryptedId = encrypt(env("HAFIS_SECRET") . "/-" . $id . "-" . env("HAFIS_SECRET_ID"));
+        $qrcode = QrCode::size(300)->generate("http://njenggrik.biz.id/viewmenu/" . "$encryptedId");
         return view('admin.qrcode', compact('qrcode'));
     }
 

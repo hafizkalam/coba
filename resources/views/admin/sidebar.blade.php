@@ -25,6 +25,14 @@
             </p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{ url('tenant') }}" class="nav-link" id="tenant">
+            <i class="nav-icon fas fa-light fa-store"></i>
+            <p>
+                Tenant
+            </p>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a href="{{ url('transaksi') }}" class="nav-link" id="transaksi">
@@ -69,4 +77,21 @@
             </p>
         </a>
     </li>
+@else
+    <li class="nav-item">
+        <a href="{{ url('transaksi') }}" class="nav-link" id="transaksi">
+            <i class="nav-icon fas fa-solid fa-shopping-cart"></i>
+            <p>
+                Transaksi
+            </p>
+        </a>
+    </li>
 @endif
+<li class="nav-item">
+    <a href="{{ url('change-password') }}" class="nav-link" id="password">
+        <i class="nav-icon fas fa-key"></i>
+        <p>
+            Change Password
+        </p>
+    </a>
+</li>

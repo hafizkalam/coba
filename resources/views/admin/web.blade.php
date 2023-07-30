@@ -42,7 +42,6 @@
                                             <td>{{ $value->name }}</td>
                                             <td>{{ $value->description }}</td>
                                             <td>
-
                                                 <button type="button" class="btn btn-primary float-right"
                                                     data-toggle="modal" data-target="#modal-edit">
                                                     Edit
@@ -100,7 +99,9 @@
 
 @section('script')
     <script>
-        $("#example1").DataTable();
+        $("#example1").DataTable({
+            responsive: true
+        });
         $('#example1 tbody').on('click', 'tr', function() {
             var table = $('#example1').DataTable();
             var data = table.row(this).data();

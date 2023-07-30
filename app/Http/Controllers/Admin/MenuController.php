@@ -29,7 +29,6 @@ class MenuController extends Controller
 
         $tenant = MasterTenant::where("user_id", $id)->first();
 
-
         $vaUpdate = array(
             // "id" => $request->id,
             "name" => $request->name_menu,

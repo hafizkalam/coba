@@ -53,7 +53,7 @@
                                             <td>{{ $no }}</td>
                                             <td>{{ $value->name }}</td>
                                             <td>{{ number_format($value->harga) }}</td>
-                                            <td><img width="100px" src="{{ url('storage/'.$value->foto) }}">
+                                            <td><img width="100px" src="{{ url('storage/' . $value->foto) }}">
                                             </td>
                                             <td>{{ $value->desc }}</td>
                                             <td><input type="checkbox" name="my-checkbox"
@@ -107,7 +107,8 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Harga</label>
                             <div class="col-sm-9">
-                                <input type="text" name="harga_menu" class="form-control" id="harga">
+                                <input type="text" name="harga_menu" class="form-control" id="harga"
+                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -157,7 +158,8 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-3 col-form-label">Harga</label>
                             <div class="col-sm-9">
-                                <input type="text" name="harga_menu" id="harga_menu" class="form-control">
+                                <input type="text" name="harga_menu" id="harga_menu" class="form-control"
+                                    onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -187,7 +189,10 @@
 
 @section('script')
     <script>
-        $("#example1").DataTable();
+        var dataTable = $("#example1").DataTable({
+            "pageLength": 50
+        });
+        // $("#example1").DataTable();
         $('#example1 tbody').on('click', 'tr', function() {
             var table = $('#example1').DataTable();
             var data = table.row(this).data();
@@ -205,7 +210,7 @@
             $("#harga_menu").val(formatRupiah(this.value));
         });
 
-        
+
 
         function StatusMenu(id) {
             var isChecked = $(this).prop("checked");
