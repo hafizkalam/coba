@@ -49,11 +49,16 @@ Route::get('coba', function () {
     $coba = explode("-", $tes1);
     dd($coba);
 });
+
 Route::post('tambah-pesanan', [TransaksiTmpController::class, 'tambahpesanan']);
 Route::post('delete-pesanan', [TransaksiTmpController::class, 'deletepesanan']);
 Route::get('jumlah-pesanan', [TransaksiTmpController::class, 'jumlah']);
 Route::get('list-pesanan', [TransaksiTmpController::class, 'list']);
 Route::post('notes-pesanan', [TransaksiTmpController::class, 'notespesanan']);
+
+Route::get('tombol-order/', [TransaksiTmpController::class, 'tombolstatus']);
+Route::post('rating', [TransaksiTmpController::class, 'rating']);
+Route::get('review/{id}', [TransaksiTmpController::class, 'review']);
 Route::get('order/{id?}', [TransaksiTmpController::class, 'order']);
 Route::get('order-status/{id}', [TransaksiTmpController::class, 'orderstatus']);
 

@@ -13,6 +13,8 @@ if (!function_exists('globalFunction')) {
             ->select(DB::raw('count(rating) as total'))
             ->where('id_menu', $id_menu)->first();
 
-        echo number_format($rating->rating / $total->total, 1, '.', '');
+            if ($rating->rating>0){
+                echo number_format($rating->rating / $total->total, 1, '.', '');
+            }
     }
 }

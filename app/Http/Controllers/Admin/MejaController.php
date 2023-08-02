@@ -50,6 +50,7 @@ class MejaController extends Controller
         $data = Meja::findOrFail($id);
         $encryptedId = encrypt(env("HAFIS_SECRET") . "/-" . $id . "-" . env("HAFIS_SECRET_ID"));
         $qrcode = QrCode::size(300)->generate("http://njenggrik.biz.id/viewmenu/" . "$encryptedId");
+        // print_r($encryptedId);
         return view('admin.qrcode', compact('qrcode'));
     }
 

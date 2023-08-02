@@ -249,7 +249,6 @@ class TransaksiTmpController extends Controller
             RatingComment::create($vaTransaksi);
         }
 
-
         return redirect()->back();
     }
     function review($id)
